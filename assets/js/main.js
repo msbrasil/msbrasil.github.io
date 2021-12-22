@@ -96,7 +96,7 @@
 	// Main Sections: Two.
 
 		// Lightbox gallery.
-			$window.on('load', function() {
+			$window.open('load', function() { //Alterei a função $window.on para window.open para que abrisse uma nova página.
 
 				$('#two').poptrox({
 					caption: function($a) { return $a.next('h3').text(); },
@@ -105,10 +105,10 @@
 					popupCloserText: '',
 					popupLoaderText: '',
 					selector: '.work-item a.image',
-					usePopupCaption: true,
+					usePopupCaption: false,
 					usePopupDefaultStyling: false,
 					usePopupEasyClose: false,
-					usePopupNav: true,
+					usePopupNav: false,
 					windowMargin: (breakpoints.active('<=small') ? 0 : 50)
 				});
 
