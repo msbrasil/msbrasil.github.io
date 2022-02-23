@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Microdados do Enade 2018</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header">
+					<div class="inner">
+						<a href="index.html" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+						<h1><strong>Sou o Matheus</strong>, seja bem-vindo<br />
+						ao meu porftólio de dados.
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="index.html" class="fas fa-home"><span class="label"></span></a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</header>
+
+				<footer id="footer">
+
+				</footer>
+				<!-- Menu -->
+
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<blockquote>Este relatório foi desenvolvido como exercício na disciplina de Estatística Econômica e Introdução à Econometria na Universidade Federal do Paraná.</blockquote>
+							<h1>Análise dos Microdados do Enade 2018</h1>
+							<h2>O Enade</h2>
+							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+							<p>O Exame Nacional de Desempenho dos Estudantes (Enade) avalia o rendimento em relação aos conteúdos 
+								programáticos nas diretrizes curriculares dos cursos, além de outros aspectos, dos ingressantes e 
+								concluintes do Ensino Superior no Brasil. A prova é aplicada pelo INEP desde 2004 e faz parte do 
+								Sistema Nacional de Avaliação de Educação Superior (Sinaes). Os resultados do Enade, aliados aos 
+								outros exames do sistema, fornece os insumos para o cálculo dos Indicadores de Qualidade da 
+								Educação Superior, permitindo que a sociedade conheça a qualidade dos cursos e instituições de 
+								educação superior brasileira.</p>
+							<p></p>
+							<h2>Seleção da amostra</h2>
+							<p>O Exame é aplicado em todo o território nacional e possui um plano trienal que determina as áreas 
+								de avaliação e os cursos a elas vinculados. O ano de 2018 corresponde ao terceiro ano do ciclo. 
+								Para o ano em questão, a diretriz determina a avaliação dos:
+							<ul>
+								<li>Cursos de bacharelado nas áreas de conhecimento de Ciências Sociais Aplicadas e afins;</li>
+								<li>Cursos de bacharelado nas áreas de conhecimento de Ciências Humanas e áreas afins que não possuem cursos também avaliados no âmbito das licenciaturas; e</li>
+								<li>Cursos Superiores de Tecnologia nas áreas de Gestão de Negócio, apoio Escolar, Hospitalidade e Lazer, Produção Cultural e Design.</li>
+							</ul>
+								Os microdados dos Enade de 2018, disponibilizado pelo governo no portal do Inep, compila dados das 
+								Instituições de Ensino Superior e seus respectivos cursos, dados dos estudantes (anonimizados) e a 
+								as respostas da prova.
+							</p>
+							<h2>Edição de 2018 e dados sobre os cursos de economia</h2>
+							<p>
+								No ano de 2018, participaram do exame 548.127 graduandos de 27 áreas do conhecimento, distribuídos 
+								entre 1.762 Instituições de Ensino Superior. 
+							</p>
+							<p>
+								Segundo o mesmo exame, no ano de 2018 foram registrados 195 cursos de economia no país, no qual 89 
+								pertencem às instituições de ensino privado e 106 pertencem às instituições de ensino público. É 
+								possível encontrar o curso nos 4 turnos possíveis de ensino. Algumas instituições ofertam o mesmo 
+								curso em turnos diferentes, portanto, em ordem decrescente existem 164 ofertados no período noturno, 
+								43 no matutino, 37 em período integral e 8 no período vespertino. A modalidade de ensino ainda é 
+								predominantemente presencial, sendo 187 instituições ofertando nesse modo versus 8 instituições que 
+								ofertam à distância.
+							</p>
+							<p>
+								A nota geral do estudante que realiza o exame é formada por duas provas, conhecimento geral e específico, 
+								correspondendo a 25% e 75% da nota, respectivamente. A nota formada está no intervalo de 0 a 100 e, entre 
+								os cursos examinados em 2018, a maior nota foi 93,7.
+							</p>
+							<p>
+								A média da nota geral dos cursos de economia no Brasil é 37,2. Para as universidades federais, referência
+								 de ensino, a nota é 41,07.  O curso de economia na Universidade Federal do Paraná tem uma nota média geral 
+								 de 38,8. Abaixo, um histograma com que demonstra a distribuição das notas.
+							</p>
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="images/Gráfico histograma do curso de economia.jpg" alt="" /></span></div>
+							</div>
+							<h2>Dados socioeconômicos</h2>
+							<p>Pela grande riqueza de dados que ele nos disponibiliza, é possível que associemos  variáveis diferentes para obter 
+								informações que podem se correlacionar, permitindo a criação de modelos muito representativos de determinadas populações, 
+								e também, observação de padrões que permeiam um determinado grupo sócio econômico e mostrar correlações com seus desempenhos 
+								nas avaliações.</p>
+							<p>
+							Para iniciarmos nossa análise pretendemos relacionar as variáveis:
+							<ul>
+								<li>Nota Geral</li>
+								<li>Presença de algum familiar com curso superior completo</li>
+							</ul>
+							Após isso, analisar se a presença de um familiar com curso superior tem relação com o nível socioeconômico do aluno, 
+							e com seu desempenho nos testes do Enade. Para buscar essa correlação inicial fiz dois histogramas, o primeiro filtrando 
+							os alunos que têm familiares com ensino superior e outro com os alunos cujo os familiares não possuem ensino superior, 
+							sobrepostos para obter visualmente as particularidades que cada um deles possuem. O gráfico abaixo é a distribuição dos 
+							grupos por nota, segmentado pela presença de familiares com superior completo.
+							</p>
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="images/Gráfico histograma todos os cursos(comparação com e sem ensino superior).png" alt="" /></span></div>
+							</div>
+							<p>
+								É perceptível em uma primeira análise a clara diferença na quantidade geral de alunos presente em cada um dos gráficos, 
+								do total de alunos realizante do exame é notório o predomínio de pessoas cujo os familiares têm ensino superior, somando 326.682, 
+								contra 158.827 sem ensino superior, podendo suscitar a hipótese que a tendência de alguém que tem um familiar já graduado
+								 cursar uma faculdade é bem maior, tendo em vista essa a discrepância entre os grupos analisados. o número de alunos com 
+								 familiares formados é mais que o dobro do número de alunos que não tem familiares com essa característica.
+							</p>
+							<p>Para o curso de Economia, a base de dados sofreu a mesma análise para se entender as diferenças entre os alunos de economia 
+								e os alunos gerais que realizaram o teste. A primeira medida a ser tomada é visualizar a distribuição através de  histogramas, 
+								segmentando  segundo o nível de formação dos familiares.
+							</p>
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="images/Gráfico histograma do curso de economia (comparação familiar com e sem ensino superior).png" alt="" /></span></div>
+							</div>
+						</div>
+							<p>Por último, seria interessante analisar uma proxy que parece ter grande peso durante a gradução: renda. A hipótese é a existência de uma linearidade
+								entre o desempenho geral do aluno e a renda familiar, ilustrado no gráfico abaixo.
+							</p>
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="images/Média da Nota Geral dos Estudantes de Economia Por Faixa de Renda Declarada no Enade.png" alt="" /></span></div>
+							</div>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			
+
+	</body>
+</html>
