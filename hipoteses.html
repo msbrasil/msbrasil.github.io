@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Teste de Hipóteses</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header">
+					<div class="inner">
+						<a href="index.html" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+						<h1><strong>Sou o Matheus</strong>, seja bem-vindo<br />
+						ao meu porftólio de dados.
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="index.html" class="fas fa-home"><span class="label"></span></a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</header>
+
+				<footer id="footer">
+
+				</footer>
+				<!-- Menu -->
+
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<blockquote>Este relatório foi desenvolvido como exercício na disciplina de Estatística Econômica e Introdução à Econometria na Universidade Federal do Paraná.</blockquote>
+							<h1>Teste de Hipóteses: Comparação de médias entre cursos de economia presenciais e Ead.</h1>
+							<h2>Introdução</h2>
+							<p>
+								A contar do momento que o homem começou a registrar sua história, nossa sociedade passou por diversas pandemias. 
+								Desde a Peste Bubônica (Peste Negra), na Idade Média, passando pela Cólera e Gripe Espanhola no século 19 e 20 e, mais recentemente, 
+								a Sars-Cov-2, nossa espécie adaptou-se e avançou tecnologicamente para sua perpetuação nesse planeta. No Brasil e no resto mundo, 
+								o isolamento social foi uma das principais medidas adotadas para conter o avanço do vírus. Desde que o vírus chegou, 
+								em meados de fevereiro de 2020, o Ministério da Saúde regulamentou os critérios de isolamento e a sociedade brasileira teve 
+								que adaptar-se à trabalhar e estudar em casa durante uma pandemia.
+							</p>
+							<p>
+								Isso posto, uma questão pertinente ao momento que estamos vivendo, e que permeia nossa formação como indivíduo e profissional, 
+								é a diferença no desempenho acadêmico entre estudar no regime de ensino presencial (tradicional)  e ensino à distância (Ead).</p>
+							<p>
+								Analisar os dados gerados durante a pandemia seria um grande risco, principalmente pelo fato da modalidade de ensino não ser uma 
+								escolha deliberada pelo aluno. Felizmente a base de microdados do Enade possui os registros de desempenho dos estudantes no ensino 
+								superior de 2018 (pré-pandemia) e, com esse material, podemos investigar a questão sobre desempenho entre os alunos das duas 
+								modalidades sem o advento da pandemia, sobretudo, dos estudantes do curso de ciências econômicas.</p>
+							<p>
+								O ensino superior presencial, embora possua críticas pelo método de aprendizado passivo, é o modelo consolidado em
+								 nossa sociedade, até o momento. As aulas acontecem em uma sala de aula com tutor que explana o conteúdo por determinado período e,
+								  então, aplica uma avaliação que mede o conteúdo retido pelo aluno.
+							</p>
+							<p>
+								O ensino à distância, por outro lado, exige habilidades de aprendizado ativo, um indivíduo que seja autodidata. Sem aulas semanais fixas 
+								e um professor presente em determinada hora do dia, a rotina de estudos e resolução de dúvidas fica à cargo do aluno. Essa quebra de um 
+								regime presencial para regime à distância pode ser difícil de acompanhar para pessoas habituadas ao ensino tradicional em sua formação 
+								anterior ao ensino superior.</p>
+							<p>
+								As seções seguintes descrevem o objetivo e descrição dos métodos aplicados e a última seção apresenta uma discussão sobre os resultados apresentados.
+							</p>
+							<h3>Objetivos</h3>
+							<p>O objetivo que norteia este relatório é a formulação é validar a hipótese que alunos do regime presencial e tradicional possuem notas superiores aos alunos do ensino à distância. O pressuposto da pesquisa está nas características de aprendizado de cada modalidade.</p>
+							<h3>Metodologia</h3>
+							<p>
+								A base de dados utilizada são os Microdados do Enade 2018, base mais recente que possui os dados do curso de economia no Brasil. 
+								Antes de aplicar os cálculos e testes, foram retirados da base todos os candidatos que possuíam valores ausentes.
+							</p>
+							<p>
+								No campo da Estatística há uma dezena de testes que verificam o ajuste dos dados à distribuição normal e os testes de escolhidos 
+								para o presente relatório foram:
+							</p>
+							<ul>
+								<li>D’Agostino e Pearson;</li>
+								<li>Anderson-Darling; e </li>
+								<li>Shapiro-Wilk.</li>
+							</ul>
+							<p>
+								Os testes de hipóteses selecionados para averiguar a afirmação sobre a diferença de notas foram:
+							</p>
+							<ul>
+								<li>Bootstrap; e</li>
+								<li>Mann-Whitney</li>
+							</ul>
+							<h2>Apresentação de Resultados</h2>
+							<p>
+								Inicialmente, foi extraído da base do Enade algumas medidas de posição central e dispersão sobre os cursos 
+								de economia. Abaixo, segue uma tabela com os resultados.
+							</p>
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="images/medidas de dispersão hipoteses.jpg" alt="" /></span></div>
+							</div>
+							<p>
+								A média, mediana e desvio padrão foram retirados com base nos 8.073 alunos registrados na prova do Enade e que 
+								não possuem valores ausentes na base, sendo 7.973 registrados no ensino presencial e 100 no ensino à distância.
+							</p>
+							<p>
+								A primeira informação observada é a semelhança na média das notas das duas modalidades. A nota mediana dos alunos
+								 de cursos presenciais é 1,5 superior à nota mediana dos cursos à distância. O desvio padrão alto para as duas modalidades
+								  de ensino indica que as notas estão amplamente distribuídas em torno da média.
+							</p>
+							<p>
+								Os resultados dos testes de normalidade aplicados para averiguar sua aderência aos parâmetros de normalidade foram 
+								colocados na tabela a seguir.
+							</p>
+
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="images/resultado testes hipoteses.jpg" alt="" /></span></div>
+							</div>
+							<p>
+								O teste de D'Agostino-Pearson foi desenvolvido para lidar com amostras mais numerosas (n > 100), apresentando, nesses casos, 
+								desempenho próximo ao do Shapiro-Wilk. O teste de Anderson-Darling apresenta bom desempenho na avaliação de normalidade em amostras
+								 maiores que 50 unidades. À medida que aumentam as amostras, especialmente acima de 500 unidades, todos os testes apresentam melhores
+								 desempenhos.
+							</p>
+							<p>
+								Os testes D’Agosto-Person e Shapiro-Wilk testam a hipótese nula de que a população é uma distribuição normal. O resultado do p-valor de 
+								cada teste é confrontado com o nível de significância deliberado pelos pesquisadores, nesse caso, de 0,05. Para ambas modalidades de ensino, 
+								o p-valor é superior a significância, portanto, para esses testes foram descartados a hipótese nula.
+							</p>
+							<p>
+								O teste de Anderson-Darling testa a hipótese nula de que uma amostra é extraída de uma população que segue uma distribuição particular. 
+								O teste retorna uma estatística e valores críticos para determinados níveis de significância. O resultado com valores e níveis está na tabela abaixo.
+							</p>
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="images/resultado testes de normalidade.jpg" alt="" /></span></div>
+							</div>
+							<p>
+								Para o ensino presencial, os resultados dos valores são significativos para cada nível de significância do teste, trazendo evidências suficientes para 
+								a hipótese nula ser descartada. Para o ensino à distância, ocorre o resultado inverso. Para todos os níveis de significância, a distribuição parece normal.
+							</p>
+							<p>
+								Após a realização dos testes de normalidade, a característica da distribuição dos dados indica quais os testes são apropriados para colocar em prova a hipótese levantada.
+							</p>
+							<p>
+								O primeiro teste realizado foi o Bootstrap, um método de reamostragem computacionalmente intensivo para inferência estatística, originalmente desenvolvido para fornecer
+								 medidas de vício e variabilidade de estimativas. Para o caso de comparação de médias entre as modalidades de ensino, o modelo assume a hipótese nula de que não existe 
+								 diferença de notas. O método simula várias amostras que misturam as médias dos dois grupos e confronta com a diferença empírica. A diferença empírica nada mais é que a 
+								 diferença média entre os dois grupos, neste caso, a diferença é de 0,12.
+							</p>
+							<p>
+								Na realização do teste bootstrap, foram gerados 10.000 reamostragem. Após confrontar cada uma das amostras com a diferença empírica, o resultado obtido  é de 4.637 amostras 
+								acima da diferença empírica. Este resultado, dividido pelo número de reamostragens, é o p-valor (0.464). O gráfico a seguir ilustra o resultado.
+							</p>
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="/images/histograma diferença de medias.jpg" alt="" /></span></div>
+							</div>
+							<p>
+								O histograma mostra a distribuição dos resultados do teste bootstrap e sua probabilidade. 
+								O ponto vermelho no centro do gráfico é a diferença média empírica utilizada nos testes comparativos. A sua posição sugere a probabilidade da 
+								diferença média ser gerada durante os testes (46,4%).
+							</p>
+							<p>
+								Outro gráfico, mostrado a seguir, ilustra cada simulação como um ponto e onde está localizada a diferença média para ilustrar o resultado.
+							</p>
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="/images/stripplot diferença de medias.jpg" alt="" /></span></div>
+							</div>
+							<p>
+								O próximo teste realizado foi o Mann-Whitney. A escolha do teste leva em conta o objetivo de comparar dois grupos não pareados e 
+								testar a hipótese que os valores do primeiro grupo (ensino presencial) são maiores que os do segundo grupo (ensino à distância). 
+								Os resultados do teste estão na tabela a seguir.
+							</p>
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="/images/resultado mann whitney.jpg" alt="" /></span></div>
+							</div>
+							<p>
+								O teste Mann-Whitney, de maneira simplificada, faz uma comparação das medianas. A hipótese nula para esse teste assume que a mediana dos
+								 dois grupos são iguais e a hipótese alternativa assume uma diferença. O valor de significância para esse teste é de 0,05. Comparando o p-valor, 
+								 o teste não traz evidências suficientes para rejeitar a hipótese nula. Portanto, para o teste Mann-Whitney, não existe diferença significativa entre as duas amostras.
+							</p>
+							<p>
+								O gráfico a seguir é um box-plot das notas médias por modalidade de ensino. O gráfico consegue ilustrar, mais uma vez, a semelhança dos grupos 
+								pela posição da mediana (37,2 e 35,7) e amplitude interquartílica (19 e 18,275).
+							</p>
+							<div class="row gtr-0">
+								<div class="col-12"><span class="image fit"><img src="/images/boxplot presencial ead.jpg" alt="" /></span></div>
+							</div>
+							<h2>Considerações Finais</h2>
+							<p>A hipótese levantada no começo deste relatório de que alunos do ensino presencial possuem notas superiores em comparação ao ensino
+								 à distância foi descartada, conforme o resultado dos testes apresentados, além dos gráficos que dão suporte à interpretação do leitor.</p>
+
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			
+
+	</body>
+</html>
