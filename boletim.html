@@ -1,66 +1,92 @@
 <!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Automação</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
+<html lang="pt-BR">
+<head>
+	<title>Boletim Econômico e Regulatório · Matheus Brasil</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/portfolio-modern.css" />
+</head>
+<body>
 
-				<!-- Header -->
-				<header id="header">
-					<div class="inner">
-						<a href="index.html" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-						<h1><strong>Sou o Matheus</strong>, seja bem-vindo<br />
-						ao meu porftólio de dados.
-						<div class="inner">
-							<ul class="icons">
-								<li><a href="index.html" class="fas fa-home"><span class="label"></span></a></li>
-							</ul>
-						</div>
-					</div>
-					
-				</header>
+<nav class="page-nav">
+	<div class="page-nav-inner">
+		<a href="index.html" class="back-link">
+			<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+			Voltar
+		</a>
+		<span class="page-logo">Matheus Brasil</span>
+	</div>
+</nav>
 
-				<footer id="footer">
+<main class="article-wrap">
 
-				</footer>
-				<!-- Menu -->
+	<header class="article-header">
+		<p class="article-context">Automação &amp; Web Scraping</p>
+		<h1 class="article-title">Boletim Econômico e Regulatório — Automação com Python</h1>
+		<div class="article-meta-bar">
+			<span class="article-tag">Python</span>
+			<span class="article-tag">BeautifulSoup</span>
+			<span class="article-tag">Requests</span>
+			<span class="article-tag">Automação</span>
+			<span class="article-tag">AGEPAR</span>
+		</div>
+	</header>
 
+	<div class="article-body">
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<blockquote>Desenvolvido na Agência Reguladora de Serviços Públicos e Delegados do Paraná.</blockquote>
-							<h1>Automação: Boletim Econômico e Regulatório</h1>
-							<p>O Boletim Econômico e Regulatório é uma publicação mensal realizada pela Agência Reguladora do Paraná - AGEPAR e tem a minha participação desde a primeira publicação. O boletim leva à sociedade informações sobre a prestação de serviços públicos regulados e dos índices que afetam os reajustes e revisões tarifarias. A edição de março, em especial, é muito importante para mim. A partir dessa edição, todos os dados, gráficos e tabelas são capturados e gerados através do Python e suas bibliotecas.
-								O script foi desenvolvido por mim e você pode conferir no meu repositório do Github através do link: </p>
-								<p><a target="blank" href="https://github.com/msbrasil/Automacao-Boletim-Economico-Regulatorio">https://github.com/msbrasil/Automacao-Boletim-Economico-Regulatorio</a>.</p>
-							<div class="row gtr-0">
-								<p>Para conferir o boletim mais recente, acesse o link abaixo:</p>
-							<div class="row gtr-0">
-								<p><a target="blank" href="https://www.agepar.pr.gov.br/Pagina/Boletim">https://www.agepar.pr.gov.br/Pagina/Boletim</a>.</p>
-								<div class="col-12"><span class="image fit"><img src="images/boletim.jpg" alt="" /></span></div>
-							</div>
-					</div>
-			</div>
+		<p class="callout">Desenvolvido na Agência Reguladora de Serviços Públicos e Delegados do Paraná (AGEPAR).</p>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			
+		<h2>Contexto</h2>
+		<p>O <strong>Boletim Econômico e Regulatório</strong> é uma publicação mensal da AGEPAR que leva à sociedade informações sobre a prestação de serviços públicos regulados e os índices que afetam reajustes e revisões tarifárias. Participei de todas as edições desde a primeira publicação.</p>
+		<p>A partir de março, implantei uma automação completa do processo de coleta e geração de dados: todos os indicadores, gráficos e tabelas passaram a ser capturados e gerados automaticamente via Python — eliminando horas de trabalho manual por edição.</p>
 
-	</body>
+		<h2>O Problema</h2>
+		<p>O processo anterior exigia que um analista acessasse manualmente diversas fontes de dados (sites do IBGE, IPEA, bancos de dados regulatórios), copiasse os valores, gerasse os gráficos e formatasse as tabelas — todo mês, repetidamente. Além de consumir tempo, esse processo era propenso a erros e dificultava a padronização visual das publicações.</p>
+
+		<h2>A Solução</h2>
+		<p>Desenvolvi um script Python que automatiza todo o pipeline:</p>
+		<ul>
+			<li>Coleta automatizada dos indicadores econômicos via web scraping (BeautifulSoup e Requests)</li>
+			<li>Limpeza e estruturação dos dados com Pandas</li>
+			<li>Geração padronizada de gráficos com Matplotlib, seguindo a identidade visual da agência</li>
+			<li>Exportação das tabelas prontas para uso no relatório final</li>
+		</ul>
+
+		<p>O código-fonte está disponível no meu GitHub:</p>
+
+		<a href="https://github.com/msbrasil/Automacao-Boletim-Economico-Regulatorio" target="_blank" rel="noopener" class="ext-link-btn">
+			Ver no GitHub
+			<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M7 3h6v6"/></svg>
+		</a>
+
+		<figure class="article-img">
+			<img src="images/boletim.jpg" alt="Boletim Econômico e Regulatório" />
+			<figcaption>Exemplo de edição do Boletim Econômico e Regulatório — AGEPAR</figcaption>
+		</figure>
+
+		<h2>Resultado</h2>
+		<p>A automação reduziu o tempo de produção do boletim de vários dias para algumas horas — garantindo consistência visual, eliminando erros de coleta manual e liberando a equipe para análises de maior valor. O boletim mais recente pode ser acessado no site da AGEPAR:</p>
+
+		<a href="https://www.agepar.pr.gov.br/Pagina/Boletim" target="_blank" rel="noopener" class="ext-link-btn">
+			Acessar o Boletim
+			<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M7 3h6v6"/></svg>
+		</a>
+
+	</div>
+
+	<nav class="article-nav-footer">
+		<a href="hipoteses.html">
+			<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+			Anterior: Teste de Hipóteses
+		</a>
+		<a href="index.html">
+			Voltar ao portfólio
+			<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+		</a>
+	</nav>
+
+</main>
+
+<script src="assets/js/portfolio-modern.js"></script>
+</body>
 </html>
