@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+<head>
+	<title>Análise de Risco, CAPM e Benchmark Setorial (SAPR4) · Matheus Brasil</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Análise econométrica de risco sistemático (CAPM), Alpha de Jensen, simulação de carteira de Markowitz e dashboard interativo em Streamlit para a Sanepar (SAPR4) e setor de saneamento na B3." />
+	<link rel="stylesheet" href="assets/css/portfolio-modern.css" />
+</head>
+<body>
+
+<nav class="page-nav">
+	<div class="page-nav-inner">
+		<a href="index.html" class="back-link">
+			<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+			Voltar
+		</a>
+		<span class="page-logo">Matheus Brasil</span>
+	</div>
+</nav>
+
+<main class="article-wrap">
+
+	<header class="article-header">
+		<p class="article-context">Econometria Financeira &amp; Business Intelligence</p>
+		<h1 class="article-title">Sanepar (SAPR4) &amp; Setor de Saneamento na B3 — Risco, CAPM e BI</h1>
+		<div class="article-meta-bar">
+			<span class="article-tag">Python</span>
+			<span class="article-tag">Streamlit</span>
+			<span class="article-tag">Plotly</span>
+			<span class="article-tag">Statsmodels · OLS</span>
+			<span class="article-tag">API Banco Central (SGS)</span>
+			<span class="article-tag">CAPM &amp; Markowitz</span>
+		</div>
+	</header>
+
+	<div class="article-body">
+
+		<p class="callout">Solução ponta a ponta de Data Analytics e Finanças Quantitativas que combina um pipeline ETL automatizado (B3 + Banco Central), modelagem econométrica (CAPM, Alpha de Jensen e Fronteira Eficiente) e um dashboard interativo publicado em Streamlit.</p>
+
+		<div class="btn-group">
+			<a href="https://sanepar-capm-jensen.streamlit.app/" target="_blank" rel="noopener" class="ext-link-btn">
+				Abrir Dashboard em Tela Cheia (Streamlit)
+				<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M7 3h6v6"/></svg>
+			</a>
+			<a href="https://github.com/msbrasil/Analise-SAPR-UFPR" target="_blank" rel="noopener" class="ext-link-btn secondary">
+				Repositório e Código no GitHub
+				<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M7 3h6v6"/></svg>
+			</a>
+		</div>
+
+		<h2>Contexto e Objetivo</h2>
+		<p>O setor de saneamento básico e gestão ambiental na B3 passou por transformações estruturais nos últimos anos — desde o Novo Marco Legal do Saneamento até crises hídricas severas, choques inflacionários e processos de desestatização. Neste cenário, investidores e analistas precisam responder a três perguntas centrais sobre a <strong>Sanepar (<code>SAPR4</code> e <code>SAPR11</code>)</strong>:</p>
+		<ul>
+			<li>Qual é o verdadeiro grau de sensibilidade da ação às oscilações do mercado brasileiro (<strong>Beta do CAPM</strong>) e qual o seu custo de capital próprio exigido ($K_e$)?</li>
+			<li>O retorno entregue remunerou adequadamente o risco sistemático assumido (<strong>Alpha de Jensen</strong>) quando comparado à taxa livre de risco (Selic efetiva) e aos pares setoriais?</li>
+			<li>Qual parcela da volatilidade do papel decorre de fatores macroeconômicos inevitáveis ($R^2$) e quanto pode ser eliminado via diversificação em carteira ($1 - R^2$)?</li>
+		</ul>
+
+		<h2>Principais Indicadores (SAPR4 · Ago/2019 a Out/2026)</h2>
+		<p>Considerando a janela de <strong>87 meses fechados</strong> e utilizando a série histórica oficial da <strong>Selic efetiva (API SGS do Banco Central)</strong> como taxa livre de risco, o modelo econométrico aponta os seguintes resultados para a <code>SAPR4</code>:</p>
+
+		<div class="kpi-grid">
+			<div class="kpi-card">
+				<span class="kpi-label">Beta OLS (β)</span>
+				<span class="kpi-val">0,741</span>
+				<span class="kpi-sub">Perfil defensivo (p = 1,7e-10)</span>
+			</div>
+			<div class="kpi-card">
+				<span class="kpi-label">Risco Diversificável</span>
+				<span class="kpi-val">61,7%</span>
+				<span class="kpi-sub">1 − R² (Sistemático: 38,3%)</span>
+			</div>
+			<div class="kpi-card">
+				<span class="kpi-label">Custo de Capital (Ke)</span>
+				<span class="kpi-val">9,86%</span>
+				<span class="kpi-sub">Exigência anual pelo CAPM</span>
+			</div>
+			<div class="kpi-card">
+				<span class="kpi-label">Alpha de Jensen</span>
+				<span class="kpi-val">+0,86%</span>
+				<span class="kpi-sub">Excesso anualizado sobre o CAPM</span>
+			</div>
+		</div>
+
+		<figure class="article-img">
+			<img src="images/sapr4_capm_overview.png" alt="Evolução Patrimonial Base 100 e Regressão CAPM OLS da SAPR4" />
+			<figcaption>Esquerda: Evolução patrimonial comparativa (Base 100 em Ago/2019). Direita: Regressão linear OLS dos retornos mensais da SAPR4 contra o Ibovespa.</figcaption>
+		</figure>
+
+		<h2>Arquitetura de Dados e Metodologia</h2>
+		<p>Para garantir reprodutibilidade e rigor analítico, o projeto foi construído como um pipeline modular em Python, estruturado em quatro camadas:</p>
+		<ul>
+			<li><strong>Extração Automatizada (ETL):</strong> Coleta de cotações históricas ajustadas a proventos na B3 e do Petróleo Brent via <code>yfinance</code>, combinada à extração direta das séries oficiais da <strong>Selic (código 4390)</strong> e do <strong>IPCA (código 433)</strong> na API do Sistema Gerenciador de Séries Temporais (SGS) do Banco Central do Brasil.</li>
+			<li><strong>Governança e Qualidade de Dados:</strong> Tratamento explícito de janelas de IPO para empresas recém-listadas (<code>AMBP3</code> em jul/2020 e <code>ORVR3</code> em fev/2021, sem preenchimento retroativo artificial) e filtro de liquidez para exclusão automática de ativos com distorção de negociação (<code>CASN4</code>).</li>
+			<li><strong>Modelagem Dimensional (Camada Gold):</strong> Persistência em tabelas fato, dimensão e Data Marts (<code>dim_ativos</code>, <code>fato_retornos_mensais</code>, <code>fato_macro_mensal</code>, <code>mart_kpis_capm</code> e <code>mart_rolling_beta</code>), prontas tanto para consumo no app quanto em ferramentas como Power BI.</li>
+			<li><strong>Motor Econométrico e Otimização:</strong> Estimação via Mínimos Quadrados Ordinários (<code>statsmodels</code>), cálculo de Sharpe, Sortino, <em>Underwater Drawdown</em>, Beta Móvel (12 e 24 meses) e otimização não-linear (<code>scipy.optimize</code>) para a Fronteira Eficiente de Markowitz.</li>
+		</ul>
+
+		<h2>Resultados e Benchmark Setorial</h2>
+		<p>A análise comparativa dividiu o universo em dois subsetores estratégicos: <strong>Saneamento Básico tradicional (Água e Esgoto)</strong> — composto por Sanepar (<code>SAPR4</code>/<code>SAPR11</code>), Sabesp (<code>SBSP3</code>) e Copasa (<code>CSMG3</code>) — e <strong>Gestão Ambiental e Resíduos</strong> — representado por Orizon (<code>ORVR3</code>) e Ambipar (<code>AMBP3</code>).</p>
+
+		<div class="article-table-wrap">
+			<table class="article-table">
+				<thead>
+					<tr>
+						<th>Ticker</th>
+						<th>Empresa</th>
+						<th>Subsetor</th>
+						<th>Meses</th>
+						<th>Beta (β)</th>
+						<th>R² (Sist.)</th>
+						<th>1 − R² (Div.)</th>
+						<th>Alpha Anual</th>
+						<th>CAGR (a.a.)</th>
+						<th>Volatilidade</th>
+						<th>Sharpe</th>
+						<th>Max Drawdown</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="highlight-row">
+						<td><strong>SAPR4</strong></td>
+						<td>Sanepar</td>
+						<td>Saneamento Básico</td>
+						<td>87</td>
+						<td>0,741</td>
+						<td>38,3%</td>
+						<td>61,7%</td>
+						<td>+0,86%</td>
+						<td>7,06%</td>
+						<td>26,3%</td>
+						<td>0,03</td>
+						<td>-42,9%</td>
+					</tr>
+					<tr>
+						<td><strong>SAPR11</strong></td>
+						<td>Sanepar (Unit)</td>
+						<td>Saneamento Básico</td>
+						<td>87</td>
+						<td>0,770</td>
+						<td>40,2%</td>
+						<td>59,8%</td>
+						<td>+0,22%</td>
+						<td>6,27%</td>
+						<td>26,7%</td>
+						<td>0,01</td>
+						<td>-42,7%</td>
+					</tr>
+					<tr>
+						<td><strong>SBSP3</strong></td>
+						<td>Sabesp</td>
+						<td>Saneamento Básico</td>
+						<td>87</td>
+						<td>0,995</td>
+						<td>42,7%</td>
+						<td>57,3%</td>
+						<td>+10,51%</td>
+						<td>15,36%</td>
+						<td>33,5%</td>
+						<td>0,32</td>
+						<td>-44,1%</td>
+					</tr>
+					<tr>
+						<td><strong>CSMG3</strong></td>
+						<td>Copasa</td>
+						<td>Saneamento Básico</td>
+						<td>87</td>
+						<td>0,986</td>
+						<td>40,4%</td>
+						<td>59,6%</td>
+						<td>+16,07%</td>
+						<td>21,59%</td>
+						<td>34,1%</td>
+						<td>0,48</td>
+						<td>-38,9%</td>
+					</tr>
+					<tr>
+						<td><strong>ORVR3</strong></td>
+						<td>Orizon</td>
+						<td>Gestão Ambiental</td>
+						<td>68</td>
+						<td>0,862</td>
+						<td>21,9%</td>
+						<td>78,1%</td>
+						<td>+15,15%</td>
+						<td>21,34%</td>
+						<td>32,1%</td>
+						<td>0,41</td>
+						<td>-24,8%</td>
+					</tr>
+					<tr>
+						<td><strong>AMBP3</strong></td>
+						<td>Ambipar</td>
+						<td>Gestão Ambiental</td>
+						<td>75</td>
+						<td>1,221</td>
+						<td>2,5%</td>
+						<td>97,5%</td>
+						<td>+27,55%*</td>
+						<td>-37,39%</td>
+						<td>143,2%</td>
+						<td>0,19</td>
+						<td>-99,3%</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<figure class="article-img">
+			<img src="images/sapr4_benchmark_risco.png" alt="Decomposição de Risco e Mapa Beta vs Alpha do Setor de Saneamento" />
+			<figcaption>Esquerda: Proporção entre risco sistemático (R²) e risco idiossincrático diversificável (1 − R²). Direita: Posicionamento estratégico Beta vs. Alpha de Jensen.</figcaption>
+		</figure>
+
+		<h3>Principais Conclusões Analíticas</h3>
+		<ul>
+			<li><strong>Caráter Defensivo Confirmado ($\beta &lt; 1$):</strong> Com $\beta = 0,741$, a <code>SAPR4</code> confirma sua natureza defensiva de <em>utility</em>: para cada 1% de oscilação no Ibovespa, espera-se variação média de apenas 0,74% no papel — sensibilidade inferior à de pares como Sabesp ($\beta = 0,995$) e Copasa ($\beta = 0,986$).</li>
+			<li><strong>Potencial de Diversificação de Carteira:</strong> A decomposição da variância mostra que apenas <strong>38,3%</strong> do risco da Sanepar é explicado pelo mercado ($R^2$). Os outros <strong>61,7%</strong> decorrem de fatores específicos (risco hídrico regional e revisões tarifárias da AGEPAR), que podem ser mitigados combinando o ativo em um portfólio diversificado (demonstrado na Aba 3 do painel via otimização de Markowitz).</li>
+			<li><strong>Divergência entre Subsetores:</strong> Enquanto as companhias tradicionais de água e esgoto operam com Betas comportados ($0,74$ a $1,00$) e <em>drawdowns</em> máximos semelhantes (entre $-39\%$ e $-44\%$), o subsetor privado de resíduos exibe forte dispersão — com <code>ORVR3</code> entregando excelente relação risco-retorno (Sharpe de $0,41$ e menor <em>drawdown</em> do setor, de $-24,8\%$) e <code>AMBP3</code> apresentando volatilidade extrema ($143\%$ a.a.).</li>
+			<li><strong>Resiliência em Choques Macroeconômicos:</strong> O teste de estresse com <strong>Beta Móvel</strong> e regressão bivariada contra o <strong>Petróleo Brent</strong> e o <strong>IPCA</strong> revela que a correlação direta da Sanepar com choques de commodities é estatisticamente nula. Em momentos de disparada do petróleo (como em 2022), o peso de exportadoras no Ibovespa puxa o índice e reduz temporariamente o Beta das empresas domésticas de saneamento.</li>
+		</ul>
+
+	</div>
+
+	<!-- Embedded Streamlit Dashboard -->
+	<section class="dashboard-embed-section" id="dashboard-interativo">
+		<div class="dashboard-embed-header">
+			<div>
+				<p class="article-context" style="margin-bottom:0.35rem;">Aplicação Interativa ao Vivo</p>
+				<h2 class="dashboard-embed-title">Dashboard Executivo em Streamlit</h2>
+			</div>
+			<a href="https://sanepar-capm-jensen.streamlit.app/" target="_blank" rel="noopener" class="ext-link-btn" style="margin:0;">
+				Abrir em Nova Aba
+				<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M7 3h6v6"/></svg>
+			</a>
+		</div>
+		<p style="font-size:0.95rem; color:var(--fg-muted); margin-bottom:1.25rem; line-height:1.7;">
+			Explore abaixo o painel interativo completo — altere a janela temporal, escolha entre a Selic histórica do Banco Central ou uma taxa livre de risco personalizada, alterne entre <code>SAPR4</code> e <code>SAPR11</code> e simule carteiras na Fronteira Eficiente em tempo real:
+		</p>
+		<div class="dashboard-frame-wrap">
+			<div class="dashboard-frame-bar">
+				<div class="dashboard-dots">
+					<span></span><span></span><span></span>
+				</div>
+				<span>sanepar-capm-jensen.streamlit.app</span>
+				<span>Streamlit · Plotly</span>
+			</div>
+			<iframe
+				src="https://sanepar-capm-jensen.streamlit.app/?embed=true"
+				class="dashboard-iframe"
+				title="Dashboard Interativo Sanepar (SAPR4) — CAPM, Risco e Benchmark Setorial"
+				loading="lazy"
+				allowfullscreen>
+			</iframe>
+		</div>
+	</section>
+
+	<nav class="article-nav-footer">
+		<a href="index.html">
+			<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+			Voltar ao portfólio
+		</a>
+		<a href="microdados-enade.html">
+			Próximo: Microdados ENADE
+			<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+		</a>
+	</nav>
+
+</main>
+
+<script src="assets/js/portfolio-modern.js"></script>
+</body>
+</html>
